@@ -11,7 +11,6 @@
 namespace SS{
 
 class SimpleSocket{
-
 private:
     int connection;
     int sock;
@@ -25,7 +24,6 @@ public:
     void set_connection(int s);
     int get_sock() const;
     struct sockaddr_in get_address() const;
-
 
 };
 }

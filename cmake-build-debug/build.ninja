@@ -78,23 +78,41 @@ build CMakeFiles/Webserver.dir/main.cpp.o: CXX_COMPILER__Webserver_Debug /Users/
   OBJECT_DIR = CMakeFiles/Webserver.dir
   OBJECT_FILE_DIR = CMakeFiles/Webserver.dir
 
-build CMakeFiles/Webserver.dir/Networking/SimpleSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/SimpleSocket.cpp || cmake_object_order_depends_target_Webserver
-  DEP_FILE = CMakeFiles/Webserver.dir/Networking/SimpleSocket.cpp.o.d
+build CMakeFiles/Webserver.dir/Networking/Sockets/SimpleSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/Sockets/SimpleSocket.cpp || cmake_object_order_depends_target_Webserver
+  DEP_FILE = CMakeFiles/Webserver.dir/Networking/Sockets/SimpleSocket.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0 -std=gnu++17
   OBJECT_DIR = CMakeFiles/Webserver.dir
-  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking
+  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking/Sockets
 
-build CMakeFiles/Webserver.dir/Networking/BindingSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/BindingSocket.cpp || cmake_object_order_depends_target_Webserver
-  DEP_FILE = CMakeFiles/Webserver.dir/Networking/BindingSocket.cpp.o.d
+build CMakeFiles/Webserver.dir/Networking/Sockets/BindingSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/Sockets/BindingSocket.cpp || cmake_object_order_depends_target_Webserver
+  DEP_FILE = CMakeFiles/Webserver.dir/Networking/Sockets/BindingSocket.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0 -std=gnu++17
   OBJECT_DIR = CMakeFiles/Webserver.dir
-  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking
+  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking/Sockets
 
-build CMakeFiles/Webserver.dir/Networking/ConnectingSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/ConnectingSocket.cpp || cmake_object_order_depends_target_Webserver
-  DEP_FILE = CMakeFiles/Webserver.dir/Networking/ConnectingSocket.cpp.o.d
+build CMakeFiles/Webserver.dir/Networking/Sockets/ConnectingSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/Sockets/ConnectingSocket.cpp || cmake_object_order_depends_target_Webserver
+  DEP_FILE = CMakeFiles/Webserver.dir/Networking/Sockets/ConnectingSocket.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0 -std=gnu++17
   OBJECT_DIR = CMakeFiles/Webserver.dir
-  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking
+  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking/Sockets
+
+build CMakeFiles/Webserver.dir/Networking/Sockets/ListeningSocket.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/Sockets/ListeningSocket.cpp || cmake_object_order_depends_target_Webserver
+  DEP_FILE = CMakeFiles/Webserver.dir/Networking/Sockets/ListeningSocket.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Webserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking/Sockets
+
+build CMakeFiles/Webserver.dir/Networking/Servers/SimpleServer.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/Servers/SimpleServer.cpp || cmake_object_order_depends_target_Webserver
+  DEP_FILE = CMakeFiles/Webserver.dir/Networking/Servers/SimpleServer.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Webserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking/Servers
+
+build CMakeFiles/Webserver.dir/Networking/Servers/TestServer.cpp.o: CXX_COMPILER__Webserver_Debug /Users/justin/Documents/C++Coding/Webserver/Networking/Servers/TestServer.cpp || cmake_object_order_depends_target_Webserver
+  DEP_FILE = CMakeFiles/Webserver.dir/Networking/Servers/TestServer.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Webserver.dir
+  OBJECT_FILE_DIR = CMakeFiles/Webserver.dir/Networking/Servers
 
 
 # =============================================================================
@@ -104,7 +122,7 @@ build CMakeFiles/Webserver.dir/Networking/ConnectingSocket.cpp.o: CXX_COMPILER__
 #############################################
 # Link the executable Webserver
 
-build Webserver: CXX_EXECUTABLE_LINKER__Webserver_Debug CMakeFiles/Webserver.dir/main.cpp.o CMakeFiles/Webserver.dir/Networking/SimpleSocket.cpp.o CMakeFiles/Webserver.dir/Networking/BindingSocket.cpp.o CMakeFiles/Webserver.dir/Networking/ConnectingSocket.cpp.o
+build Webserver: CXX_EXECUTABLE_LINKER__Webserver_Debug CMakeFiles/Webserver.dir/main.cpp.o CMakeFiles/Webserver.dir/Networking/Sockets/SimpleSocket.cpp.o CMakeFiles/Webserver.dir/Networking/Sockets/BindingSocket.cpp.o CMakeFiles/Webserver.dir/Networking/Sockets/ConnectingSocket.cpp.o CMakeFiles/Webserver.dir/Networking/Sockets/ListeningSocket.cpp.o CMakeFiles/Webserver.dir/Networking/Servers/SimpleServer.cpp.o CMakeFiles/Webserver.dir/Networking/Servers/TestServer.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=12.0
   OBJECT_DIR = CMakeFiles/Webserver.dir
   POST_BUILD = :

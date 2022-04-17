@@ -20,10 +20,10 @@ SS::SimpleSocket::SimpleSocket(const int &domain, const int &service, const int 
 
 void SS::SimpleSocket::test_connection(int item) {
     if(item < 0){
-        perror("Failed Connection ....");
+        perror("Failed Connection .... \n");
         exit(EXIT_FAILURE);
     }
-    printf("Successful Connection");
+    printf("Successful Connection \n");
 }
 
 int SS::SimpleSocket::get_connection() const {return connection;}
