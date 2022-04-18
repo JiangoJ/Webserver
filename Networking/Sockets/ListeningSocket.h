@@ -13,6 +13,7 @@ private:
 public:
     ListeningSocket(const int& domain, const int& service, const int& protocol, const int& port, const u_long& interface, const int& bklg);
     void start_listening();
+    int get_backlog();
 };
 }
 

@@ -11,6 +11,7 @@ class TestServer : public SimpleServer {
 private:
     char buffer[SIMPLE_SERVER_BUFF_SIZE] = {0};
     int new_socket;
+    int reqCount;
 
     void accepter();
     void handler();

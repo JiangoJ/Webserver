@@ -4,7 +4,7 @@
 
 #include "TestServer.h"
 
-SS::TestServer::TestServer() : SimpleServer(AF_INET, SOCK_STREAM, 0, 80, INADDR_ANY, 10  ) {
+SS::TestServer::TestServer() : SimpleServer(AF_INET, SOCK_STREAM, 0, 80, INADDR_ANY, 100  ) {
     start_server();
 }
 
@@ -21,7 +21,8 @@ void SS::TestServer::accepter() {
 }
 
 void SS::TestServer::handler() {
-    std::cout << buffer << std::endl;
+    std::cout << buffer << " " << reqCount << std::endl;
+    reqCount += 1;
 }
 
 void SS::TestServer::responder() {

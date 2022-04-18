@@ -12,7 +12,10 @@ SS::ListeningSocket::ListeningSocket(const int &domain, const int &service, cons
 
 }
 
-
 void SS::ListeningSocket::start_listening() {
     listening = listen(get_sock(), backlog);
+}
+
+int SS::ListeningSocket::get_backlog() {
+    return backlog;
 }

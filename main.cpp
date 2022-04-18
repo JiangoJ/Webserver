@@ -13,6 +13,7 @@ int main() {
 //
 //    std::cout << "Success..." << std::endl;
 
-    SS::TestServer();
+    SS::MultithreadedServer();
+
     return 0;
 }
