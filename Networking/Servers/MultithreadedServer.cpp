@@ -4,7 +4,7 @@
 
 #include "MultithreadedServer.h"
 
-SS::MultithreadedServer::MultithreadedServer() : SimpleServer(AF_INET, SOCK_STREAM, 0, 80, INADDR_ANY, 100  ) {
+SS::MultithreadedServer::MultithreadedServer() : SimpleServer(AF_INET, SOCK_STREAM, 0, 80, INADDR_ANY, 1000  ) {
     start_server();
 }
 
@@ -16,6 +16,9 @@ void SS::MultithreadedServer::accepter() {
     struct sockaddr_in client_addr;
     socklen_t length = sizeof(client_addr);
     int new_socket = accept(get_socket()->get_sock(), (struct sockaddr*)&client_addr, &length);
+
+    threadCount ++;
+    std::cout << "Thread Count: " << threadCount << std::endl;
 
     std::thread t(&MultithreadedServer::read_loop, this, new_socket);
     t.detach();
