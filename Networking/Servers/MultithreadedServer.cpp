@@ -63,10 +63,10 @@ void SS::MultithreadedServer::write_handler(const char* buffer) {
     reqCount += 1;
 
     std::unique_lock lock(mutex_);
-    std::cout << std::this_thread::get_id() << "has the write lock" << std::endl;
+    std::cout << std::this_thread::get_id() << " has the write lock" << std::endl;
     messageThread.push_back(buffer);
     messageThreadStr += std::string(buffer) + '\n';
-    std::cout << std::this_thread::get_id() << "has RELEASED the write lock" << std::endl;
+    std::cout << std::this_thread::get_id() << " has RELEASED the write lock" << std::endl;
     cv.notify_all();
 
 }
@@ -75,11 +75,11 @@ void SS::MultithreadedServer::responder_handler(const int& socket) {
 
     while(get_socket()){
         std::shared_lock lock(mutex_);
-        std::cout << std::this_thread::get_id() << "has the read lock" << std::endl;
+        std::cout << std::this_thread::get_id() << " has the read lock" << std::endl;
         //Conditional Variable to wait for a writ.e to be made by a thread
         cv.wait(lock);
         write(socket, messageThreadStr.c_str(), strlen(messageThreadStr.c_str()));
-        std::cout << std::this_thread::get_id() << "has RELEASED the read lock" << std::endl;
+        std::cout << std::this_thread::get_id() << " has RELEASED the read lock" << std::endl;
     }
 
 }
