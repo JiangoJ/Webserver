@@ -34,33 +34,59 @@ void SS::MultithreadedServer::read_loop(const int &socket) {
     //Fill with Null character so that cout can easily stop printing after each individual message
     char buffer[SIMPLE_SERVER_BUFF_SIZE] = {0};
 
+    std::thread t_read(&SS::MultithreadedServer::responder_handler, this, socket);
+
     while((std::chrono::duration_cast<std::chrono::seconds>(end - start).count() <= 5) && bytesRead <  SIMPLE_SERVER_BUFF_SIZE) {
 
-        read_connection = read(socket, buffer + bytesRead, SIMPLE_SERVER_BUFF_SIZE - bytesRead);
-        //get_socket()->test_connection(read_connection);
+        read_connection = read(socket, buffer, SIMPLE_SERVER_BUFF_SIZE);
 
-        handler(buffer + bytesRead);
-        //read_connection is also how many bytes were read
+        //reset 5-second timer whenever we read something
+        if(read_connection > 0){
+            start = std::chrono::system_clock::now();
+        }
+        std::cout << "READ CONNECTION " << read_connection << std::endl;
+        write_handler(buffer);
         bytesRead += read_connection;
-
-        responder(socket);
+        memset(buffer, 0, SIMPLE_SERVER_BUFF_SIZE);
+        end = std::chrono::system_clock::now();
     }
 
     close(socket);
+    //Join read thread after close socket
+    t_read.join();
 
 }
 
-void SS::MultithreadedServer::handler(const char* buffer) {
+void SS::MultithreadedServer::write_handler(const char* buffer) {
+
     std::cout << "THREAD: " << std::this_thread::get_id() << " " << buffer << " " << reqCount << std::endl;
     reqCount += 1;
+
+    std::unique_lock lock(mutex_);
+    std::cout << std::this_thread::get_id() << "has the write lock" << std::endl;
+    messageThread.push_back(buffer);
+    messageThreadStr += std::string(buffer) + '\n';
+    std::cout << std::this_thread::get_id() << "has RELEASED the write lock" << std::endl;
+    cv.notify_all();
+
 }
 
-void SS::MultithreadedServer::responder(const int& socket) {
-    char* response = "Hello Client";
-    write(socket, response, strlen(response));
+void SS::MultithreadedServer::responder_handler(const int& socket) {
+
+    while(get_socket()){
+        std::shared_lock lock(mutex_);
+        std::cout << std::this_thread::get_id() << "has the read lock" << std::endl;
+        //Conditional Variable to wait for a writ.e to be made by a thread
+        cv.wait(lock);
+        write(socket, messageThreadStr.c_str(), strlen(messageThreadStr.c_str()));
+        std::cout << std::this_thread::get_id() << "has RELEASED the read lock" << std::endl;
+    }
+
 }
+
 
 void SS::MultithreadedServer::start_server() {
+    //Why was threadcout set to like 1billion here???
     while(threadCount < 100){
         std::cout << ":::::::::WAITING::::::::" << std::endl;
         accepter();

@@ -5,7 +5,7 @@ import random
 HOST = "127.0.0.1"
 PORT = 80
 timeout = 100
-clientCount = 20
+clientCount = 5
 msgsSent = 0
 
 clients = []
@@ -22,19 +22,26 @@ timeout_start = time.time()
 # while (time.time() < timeout_start + timeout):
     #time.sleep(float(random.randint(0,50))/1000)
 
-while(msgsSent <= 10000):
-
+while(msgsSent <= 10):
+    
+    time.sleep(0.1)
     clientNumber = random.randint(0, clientCount-1)
     client = clients[clientNumber]
     msg = msgCount[clientNumber]
 
-    data = "Hello Server"
-    data += " This is Client " + str(clientNumber) + " Msg: " + str(msg)
+    print('CLIENT: ', clientNumber, '\n')
+
+    data = "Client " + str(clientNumber) + " Msg: " + str(msg)
     msgCount[clientNumber] = msg + 1
 
     client.send(data.encode())
-    dataFromServer = client.recv(10000)
+    dataFromServer = client.recv(1000)
 
+    print(dataFromServer.decode())
+
+    read_chat = "##DISPLAY_MESSAGE##"
+    client.send(read_chat.encode())
+    dataFromServer = client.recv(100000)
     print(dataFromServer.decode())
 
     msgsSent += 1
@@ -44,4 +51,3 @@ for i in range(clientCount):
 
 
 print("Total Time Taken: ", str(time.time() - timeout_start))
-

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define SIMPLE_SERVER_BUFF_SIZE 100000
+#define SIMPLE_SERVER_BUFF_SIZE 10000
 
 namespace SS{
 class SimpleServer {
